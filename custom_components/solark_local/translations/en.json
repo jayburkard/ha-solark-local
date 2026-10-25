@@ -1,0 +1,207 @@
+{
+  "title": "Sol-Ark Local",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect your inverter",
+        "description": "Connect directly to the factory E-Linter network adapter. Stop other local inverter pollers before continuing.",
+        "data": {
+          "model": "Inverter model",
+          "host": "Inverter IP address"
+        },
+        "data_description": {
+          "host": "IP address of the factory Ethernet/Wi-Fi adapter, without http:// or a port."
+        },
+        "sections": {
+          "advanced": {
+            "name": "Advanced connection settings",
+            "data": {
+              "modbus_address": "Modbus address"
+            },
+            "data_description": {
+              "modbus_address": "Leave at 1 unless the inverter unit address was changed."
+            }
+          }
+        }
+      },
+      "reconfigure": {
+        "title": "Change inverter connection",
+        "description": "The new address must reach the same inverter serial number. Your entities and history are preserved.",
+        "data": {
+          "model": "Inverter model",
+          "host": "Inverter IP address"
+        },
+        "sections": {
+          "advanced": {
+            "name": "Advanced connection settings",
+            "data": {
+              "modbus_address": "Modbus address"
+            },
+            "data_description": {
+              "modbus_address": "Leave at 1 unless the inverter unit address was changed."
+            }
+          }
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot reach the adapter. Check its IP and allow Home Assistant to reach TCP port 80.",
+      "invalid_host": "Enter an IPv4 or IPv6 address without a URL scheme, port, or path.",
+      "unsupported_model": "This inverter model is not supported.",
+      "invalid_address": "Enter a whole-number Modbus address between 1 and 247.",
+      "invalid_response": "The adapter returned invalid or incompatible register data. Confirm the model and pause other local pollers.",
+      "wrong_inverter": "This address belongs to a different inverter. Reconfigure must use the original inverter.",
+      "unknown": "Unexpected error. Check the Home Assistant log for details."
+    },
+    "abort": {
+      "already_configured": "This adapter or inverter is already configured. Use Reconfigure to change its IP address.",
+      "reconfigure_successful": "The inverter connection was updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Hardware and energy options",
+        "data": {
+          "poll_interval": "Polling interval",
+          "battery_installed": "Battery installed",
+          "pv_installed": "PV strings installed",
+          "generator_installed": "Generator installed",
+          "grid_source": "Grid energy measurement point",
+          "grid_import_negative": "Negative grid power means importing"
+        },
+        "data_description": {
+          "poll_interval": "Seconds between shared sensor updates (10–300). Default: 15 seconds.",
+          "battery_installed": "Enable only after connecting a battery. Otherwise battery readings and energy sensors are omitted.",
+          "pv_installed": "Enable after connecting PV strings to expose PV readings and estimated energy.",
+          "generator_installed": "Records your hardware configuration. Generator power and energy are not yet validated; no generator sensors are created. Use a separate generator meter for complete energy accounting.",
+          "grid_source": "External CTs measure the grid connection; internal readings measure the inverter grid port. Changing this affects future accumulation only.",
+          "grid_import_negative": "Default matches the tested external CT readings. Disable if the selected meter reports positive power during import. Changing polarity does not correct past totals."
+        },
+        "description": "Energy totals are local estimates from power samples. Check grid polarity while importing. Disconnected PV and battery sensors are omitted. Generator metering is not yet supported."
+      }
+    }
+  },
+  "selector": {
+    "model": {
+      "options": {
+        "18k_pv": "18K PV"
+      }
+    },
+    "grid_source": {
+      "options": {
+        "grid_ct_power": "External grid CTs",
+        "grid_power": "Internal inverter grid port"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "grid_frequency": {
+        "name": "Grid frequency"
+      },
+      "grid_voltage_l1": {
+        "name": "Grid L1 voltage"
+      },
+      "grid_voltage_l2": {
+        "name": "Grid L2 voltage"
+      },
+      "grid_voltage": {
+        "name": "Grid L1-L2 voltage"
+      },
+      "inverter_voltage_l1": {
+        "name": "Inverter L1 voltage"
+      },
+      "inverter_voltage_l2": {
+        "name": "Inverter L2 voltage"
+      },
+      "inverter_voltage": {
+        "name": "Inverter L1-L2 voltage"
+      },
+      "grid_power_l1": {
+        "name": "Grid internal L1 power"
+      },
+      "grid_power_l2": {
+        "name": "Grid internal L2 power"
+      },
+      "grid_power": {
+        "name": "Grid internal total power"
+      },
+      "grid_ct_power_l1": {
+        "name": "Grid CT L1 power"
+      },
+      "grid_ct_power_l2": {
+        "name": "Grid CT L2 power"
+      },
+      "grid_ct_power": {
+        "name": "Grid CT total power"
+      },
+      "inverter_power": {
+        "name": "Inverter power"
+      },
+      "battery_temperature": {
+        "name": "Battery temperature"
+      },
+      "battery_voltage": {
+        "name": "Battery voltage"
+      },
+      "battery_soc": {
+        "name": "Battery state of charge"
+      },
+      "battery_power": {
+        "name": "Battery power (positive charging)"
+      },
+      "battery_current": {
+        "name": "Battery current (positive charging)"
+      },
+      "inverter_frequency": {
+        "name": "Inverter frequency"
+      },
+      "pv1_voltage": {
+        "name": "PV1 voltage"
+      },
+      "pv1_current": {
+        "name": "PV1 current"
+      },
+      "pv1_power": {
+        "name": "PV1 power"
+      },
+      "pv2_voltage": {
+        "name": "PV2 voltage"
+      },
+      "pv2_current": {
+        "name": "PV2 current"
+      },
+      "pv2_power": {
+        "name": "PV2 power"
+      },
+      "pv3_voltage": {
+        "name": "PV3 voltage"
+      },
+      "pv3_current": {
+        "name": "PV3 current"
+      },
+      "pv3_power": {
+        "name": "PV3 power"
+      },
+      "pv_power": {
+        "name": "PV total power"
+      },
+      "grid_import_energy": {
+        "name": "Grid import energy (estimated)"
+      },
+      "grid_export_energy": {
+        "name": "Grid export energy (estimated)"
+      },
+      "pv_energy": {
+        "name": "Solar production energy (estimated)"
+      },
+      "battery_charge_energy": {
+        "name": "Battery charge energy (estimated)"
+      },
+      "battery_discharge_energy": {
+        "name": "Battery discharge energy (estimated)"
+      }
+    }
+  }
+}

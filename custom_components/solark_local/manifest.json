@@ -1,0 +1,14 @@
+{
+  "domain": "solark_local",
+  "name": "Sol-Ark Local",
+  "codeowners": [
+    "@jayburkard"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/jayburkard/ha-solark-local",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/jayburkard/ha-solark-local/issues",
+  "requirements": [],
+  "version": "0.2.0"
+}

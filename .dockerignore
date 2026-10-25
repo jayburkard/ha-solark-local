@@ -1,0 +1,9 @@
+.git
+__pycache__
+**/__pycache__
+.pytest_cache
+.ruff_cache
+dist
+test-results
+*.zip
+config.json
