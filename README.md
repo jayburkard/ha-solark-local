@@ -66,7 +66,7 @@ sequenceDiagram
     Adapter->>Inv: Requested Modbus register read
     Inv-->>Adapter: Register words
     Adapter-->>HA: HTTP 200 — JSON containing hex Modbus RTU response
-    Note over HA: Validate CRC and frame; decode words, signs and scales
+    Note over HA: Validate CRC and frame, then decode words, signs and scales
 ```
 
 This is **Modbus RTU encapsulated in HTTP**, rather than a standard Modbus TCP
